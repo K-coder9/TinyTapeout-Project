@@ -1,4 +1,4 @@
-module PWM_generator( input wire [7:0] dp, input wire clk, input wire rst, output reg [7:0] uio_out);
+module PWM_generator( input wire [7:0] dp, input wire clk, input wire rst, output reg [7:0] pwm);
   
   reg [7:0] counter;  
   // the clock period is 20 ns so 50 MHz
@@ -11,9 +11,9 @@ module PWM_generator( input wire [7:0] dp, input wire clk, input wire rst, outpu
       else begin
         counter <= counter + 1'd1;
         if(counter< dp)
-          uio_out <= 8'b00000001;
+          pwm <= 8'b00000001;
         else 
-          uio_out <= 8'b00000000;
+          pwm <= 8'b00000000;
       end
       
     end
